@@ -36,206 +36,211 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     final double sw = MediaQuery.of(context).size.width;
     final double sh = MediaQuery.of(context).size.height;
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(80.0),
-        child: AppBar(
-          leading: Padding(
-            padding: const EdgeInsets.only(left: 8.0),
-            child: CircleAvatar(
-              backgroundColor: Colors.white,
-              child: CircleAvatar(
-                backgroundImage: NetworkImage(
-                    "https://s359.kapook.com/r/600/auto/pagebuilder/c77a4980-a5a6-4d23-8e61-48ea58f25879.jpg"),
-              ),
-            ),
+    final double abh = sh * 0.11;
+    var appBar2 = AppBar(
+      leading: Padding(
+        padding: const EdgeInsets.only(left: 8.0),
+        child: CircleAvatar(
+          backgroundColor: Colors.white,
+          child: CircleAvatar(
+            backgroundImage: NetworkImage(
+                "https://s359.kapook.com/r/600/auto/pagebuilder/c77a4980-a5a6-4d23-8e61-48ea58f25879.jpg"),
           ),
-          centerTitle: false,
-          title: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                "Tesla model 3",
-                style: TextStyle(
-                    fontSize: 16, color: Color.fromARGB(255, 195, 188, 188)),
-              ),
-              const Text(
-                "Pasktick Cha",
-                style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+      ),
+      centerTitle: false,
+      title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            "Tesla model 3",
+            style: TextStyle(
+                fontSize: 16, color: Color.fromARGB(255, 195, 188, 188)),
+          ),
+          const Text(
+            "Pasktick Cha",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ],
+      ),
+      excludeHeaderSemantics: true,
+      elevation: 0.0,
+      backgroundColor: Colors.transparent,
+      flexibleSpace: Container(
+        decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(25),
+                bottomRight: Radius.circular(25)),
+            color: Color.fromARGB(255, 0, 95, 248)),
+      ),
+      actions: [
+        Container(
+          height: 60,
+          width: sw * 0.3,
+          decoration: BoxDecoration(
+            color: Color.fromARGB(255, 4, 16, 5),
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+              width: 4,
+              color: Color.fromARGB(255, 40, 63, 42),
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 1,
+                blurRadius: 7,
+                offset: Offset(0, 3), // changes position of shadow
               ),
             ],
           ),
-          excludeHeaderSemantics: true,
-          elevation: 0.0,
-          backgroundColor: Colors.transparent,
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(25),
-                    bottomRight: Radius.circular(25)),
-                color: Color.fromARGB(255, 0, 95, 248)),
-          ),
-          actions: [
-            Container(
-              height: 60,
-              width: sw * 0.3,
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 4, 16, 5),
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                  width: 4,
-                  color: Color.fromARGB(255, 40, 63, 42),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 1,
-                    blurRadius: 7,
-                    offset: Offset(0, 3), // changes position of shadow
-                  ),
-                ],
-              ),
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            "Wallet",
-                            style: TextStyle(
-                                fontSize: 8,
-                                color: Color.fromARGB(255, 195, 188, 188)),
-                          ),
-                          Icon(
-                            Icons.attach_money,
-                            color: Colors.white,
-                          ),
-                        ],
+                      const Text(
+                        "Wallet",
+                        style: TextStyle(
+                            fontSize: 8,
+                            color: Color.fromARGB(255, 195, 188, 188)),
                       ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          const Text(
-                            "780.00",
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
+                      Icon(
+                        Icons.attach_money,
+                        color: Colors.white,
                       ),
                     ],
                   ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      const Text(
+                        "780.00",
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(width: 10),
+        const Padding(
+          padding: const EdgeInsets.only(right: 8.0),
+          child: CircleAvatar(
+            backgroundColor: Color.fromARGB(255, 40, 63, 42),
+            radius: 30,
+            child: CircleAvatar(
+              radius: 25,
+              backgroundColor: Color.fromARGB(255, 0, 0, 0),
+              child: Icon(
+                Icons.notifications_outlined,
+                size: 30,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+    print(appBar2.preferredSize.height);
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(abh),
+        child: appBar2,
+      ),
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Positioned(
+              child: GoogleMap(
+                initialCameraPosition: CameraPosition(
+                  target: LatLng(13.7658368, 100.5518848),
+                  zoom: 14,
                 ),
               ),
             ),
-            const SizedBox(width: 10),
-            const Padding(
-              padding: const EdgeInsets.only(right: 8.0),
-              child: CircleAvatar(
-                backgroundColor: Color.fromARGB(255, 40, 63, 42),
-                radius: 30,
-                child: CircleAvatar(
-                  radius: 25,
-                  backgroundColor: Color.fromARGB(255, 0, 0, 0),
-                  child: Icon(
-                    Icons.notifications_outlined,
-                    size: 30,
-                    color: Colors.white,
-                  ),
+            Positioned(
+              top: 2,
+              width: sw,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      height: 60,
+                      width: sw * 0.7,
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(
+                          width: 1,
+                          color: Color.fromARGB(255, 66, 254, 194),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 1,
+                            blurRadius: 7,
+                            offset: Offset(0, 3), // changes position of shadow
+                          ),
+                        ],
+                      ),
+                      child: Center(
+                        child: TextField(
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            prefixIcon: Icon(
+                              Icons.search,
+                              color: Colors.black,
+                            ),
+                            hintText: 'Search',
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 60,
+                      width: sw * 0.2,
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(
+                          width: 1,
+                          color: Color.fromARGB(255, 66, 254, 194),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 1,
+                            blurRadius: 7,
+                            offset: Offset(0, 3), // changes position of shadow
+                          ),
+                        ],
+                      ),
+                      child: Center(
+                        child: Icon(
+                          Icons.sort_rounded,
+                          color: Colors.black,
+                          size: 40,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
           ],
         ),
-      ),
-      body: Stack(
-        children: [
-          Positioned(
-            child: GoogleMap(
-              initialCameraPosition: CameraPosition(
-                target: LatLng(13.7658368, 100.5518848),
-                zoom: 14,
-              ),
-            ),
-          ),
-          Positioned(
-            top: 130 + 20,
-            width: sw,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    height: 60,
-                    width: sw * 0.7,
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                        width: 1,
-                        color: Color.fromARGB(255, 66, 254, 194),
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 1,
-                          blurRadius: 7,
-                          offset: Offset(0, 3), // changes position of shadow
-                        ),
-                      ],
-                    ),
-                    child: Center(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          prefixIcon: Icon(
-                            Icons.search,
-                            color: Colors.black,
-                          ),
-                          hintText: 'Search',
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 60,
-                    width: sw * 0.2,
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                        width: 1,
-                        color: Color.fromARGB(255, 66, 254, 194),
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 1,
-                          blurRadius: 7,
-                          offset: Offset(0, 3), // changes position of shadow
-                        ),
-                      ],
-                    ),
-                    child: Center(
-                      child: Icon(
-                        Icons.sort_rounded,
-                        color: Colors.black,
-                        size: 40,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       // floatingActionButton: ClipPath(
@@ -286,27 +291,68 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Positioned(
-              bottom: 30,
+              bottom: 10,
               width: sw,
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Icon(
-                      Icons.map_outlined,
-                      color: Colors.white,
-                      size: 30,
+                    Column(
+                      children: [
+                        Icon(
+                          Icons.map_outlined,
+                          color: Colors.white,
+                          size: 30,
+                        ),
+                        Text(
+                          "Station",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 10,
+                          ),
+                        )
+                      ],
                     ),
-                    Icon(
-                      Icons.map_outlined,
-                      color: Colors.white,
-                      size: 30,
+                    Column(
+                      children: [
+                        CircleAvatar(
+                          radius: 28,
+                          backgroundColor: Color(0xFF01C0A5),
+                          child: CircleAvatar(
+                            backgroundColor: Color(0xFF07E9C9),
+                            radius: 25,
+                            child: Icon(
+                              Icons.map_outlined,
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                          ),
+                        ),
+                        Text(
+                          "Scan",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 10,
+                          ),
+                        )
+                      ],
                     ),
-                    Icon(
-                      Icons.map_outlined,
-                      color: Colors.white,
-                      size: 30,
+                    Column(
+                      children: [
+                        Icon(
+                          Icons.person,
+                          color: Colors.white,
+                          size: 30,
+                        ),
+                        Text(
+                          "Profile",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 10,
+                          ),
+                        )
+                      ],
                     ),
                   ],
                 ),

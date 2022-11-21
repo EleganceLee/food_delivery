@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'dart:ui' as ui;
 
 void main() {
   runApp(const MyApp());
@@ -197,7 +199,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             Icons.search,
                             color: Colors.black,
                           ),
-                          hintText: 'Search Tech Talk',
+                          hintText: 'Search',
                         ),
                       ),
                     ),
@@ -236,39 +238,81 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: ClipPath(
-        clipper: FloatingClipPath(),
-        child: Container(
-          height: 60,
-          width: sw * 0.8,
-          decoration: BoxDecoration(
-            color: Color.fromARGB(255, 43, 43, 43),
-            borderRadius: BorderRadius.circular(40),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Icon(
-                Icons.location_on_outlined,
-                size: 40,
-                color: Colors.white,
-              ),
-              CircleAvatar(
-                radius: 100,
-                backgroundColor: Color.fromARGB(255, 202, 149, 149),
-                child: Icon(
-                  Icons.qr_code_scanner,
-                  size: 40,
-                  color: Colors.white,
+      // floatingActionButton: ClipPath(
+      //   clipper: FloatingClipPath(),
+      //   child: Container(
+      //     height: 150,
+      //     width: sw * 0.8,
+      //     decoration: BoxDecoration(
+      //       color: Color.fromARGB(255, 43, 43, 43),
+      //       borderRadius: BorderRadius.circular(40),
+      //     ),
+      //     child: Row(
+      //       mainAxisAlignment: MainAxisAlignment.spaceAround,
+      //       children: [
+      //         Icon(
+      //           Icons.location_on_outlined,
+      //           size: 40,
+      //           color: Colors.white,
+      //         ),
+      //         CircleAvatar(
+      //           radius: 100,
+      //           backgroundColor: Color.fromARGB(255, 202, 149, 149),
+      //           child: Icon(
+      //             Icons.qr_code_scanner,
+      //             size: 40,
+      //             color: Colors.white,
+      //           ),
+      //         ),
+      //         Icon(
+      //           Icons.person,
+      //           size: 40,
+      //           color: Colors.white,
+      //         ),
+      //       ],
+      //     ),
+      //   ),
+      // ),
+      floatingActionButton: Container(
+        height: 100,
+        child: Stack(
+          children: [
+            Positioned(
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: SvgPicture.asset(
+                  "assets/images/ss.svg",
                 ),
               ),
-              Icon(
-                Icons.person,
-                size: 40,
-                color: Colors.white,
+            ),
+            Positioned(
+              bottom: 30,
+              width: sw,
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Icon(
+                      Icons.map_outlined,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                    Icon(
+                      Icons.map_outlined,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                    Icon(
+                      Icons.map_outlined,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                  ],
+                ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -279,7 +323,11 @@ class FloatingClipPath extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     Path path = Path();
+    var w = size.width;
+    var h = size.height;
 
+    path.moveTo(w * 0.2, 0);
+    path.quadraticBezierTo(w * 0.5, h - 100, w, h);
     return path;
   }
 
